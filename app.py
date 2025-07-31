@@ -23,7 +23,7 @@ HTML_TEMPLATE = """
 </head>
 <body>
     <div id="playerjs" style="width:100%;height:100%;"></div>
-    
+
    <script>
         const playerjs = new Playerjs({{
             id: "playerjs",
@@ -59,6 +59,10 @@ def tvn_player():
         return Response(final_html, mimetype='text/html')
     else:
         return "No se pudo obtener access_token", 500
+
+@app.route('/')
+def home():
+    return tvn_player()
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
