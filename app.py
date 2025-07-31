@@ -44,7 +44,7 @@ async def get_token():
         parse_pdf=False,
         max_age=14400000
     )
-    raw_html = response.get('rawHtml', '')
+    raw_html = response.rawHtml or ''
     match = re.search(r'access_token=([a-zA-Z0-9\-_\.]+)', raw_html)
     return match.group(1) if match else None
 
